@@ -1,0 +1,61 @@
+/*
+theme: #405275;
+background: #2A3751; rgba(40,53,79,.9);
+background-hover: #39455D;
+border: #313D56;
+highlight: #F7931E;
+highlight-text: #00A5E2;
+*/
+
+@font-face {
+	font-family:'Koverwatch';
+	font-style: normal;
+	font-weight: 400;
+	src: url(/fonts/koverwatch.ttf) format('truetype');
+}
+* {font-family: 'Koverwatch';}
+p {font-family: 'Koverwatch'; line-height: 1.5em;}
+body {background: #F0EEF3; color: #405275; margin-top: 7rem;}
+h1, h2, h3, h4, h5, h6 {font-style: italic; text-align: center; text-shadow: 0 .1em .15em rgba(60,72,96,.5);}
+h1 {font-size: 3.5em;}
+h2 {font-size: 3em;}
+h3 {font-size: 2.5em;}
+h4 {font-size: 2em;}
+h6 {font-size: 1.5em;}
+h6 {font-size: 1em;}
+header {position: fixed; top: 0; left: 0; right: 0; background: #2A3751; color: #FFF; border: 0 0 0.1em;}
+header h1, header > ul, header > ul li, header a {display: inline-block;}
+header h1 {font-size: 1rem; background: #000;}
+header h1 a {padding: 1.25rem 1rem;}
+header ul li a {padding: 1.5rem 1rem;}
+header ul li a {border-left: 1px solid #313D56;}
+header h1 a:hover {text-decoration: none; background-color: #222;}
+header ul li a:hover {text-decoration: none; background-color: #39455D;}
+header ul.systemFunc {float: right; background: #F7931E;}
+header ul.systemFunc li a:hover {background: #F89E35;}
+header a {color: #FFF;}
+article {margin-top: 2em;}
+article > blockquote {margin-top: 1em; text-align: center; font-style: italic; color: #00A5E2; font-size: 1.5em;}
+article > blockquote:before, article > blockquote:after {content: '"';}
+article > p {text-align: center; margin-top: 1em;}
+a.button {display: inline-block; padding: .25em 2em; border: .1em solid #F7931E; border-radius: .1em; background: #F7931E; color: #FFF; font-size: 1.5em;}
+a.button:hover {background: #F89E35; text-decoration: none;}
+a.button.blue {border: .1em solid #00a5e2; background: transparent; color: #00A5E2;}
+a.button.blue:hover {background: #00a5e2; color: #FFF;}
+.app > .appBar {position: fixed; top: 4rem; left: 0; right: 0; background: #AAA;}
+.app > .appBar h2, .app > .appBar ul, .app > .appBar ul li {display: inline-block; font-size: 1rem;}
+.app > .appBar a:hover {text-decoration: none; background-color: #888;}
+.app > .appBar h2 a {display: inline-block; padding: .5rem 1rem; color: #FFF;}
+.app > .appBar ul li a {display: inline-block; padding: .5rem .5rem; border-left: 1px solid #999; color: #FFF;}
+.app > nav {position: fixed; top: 7rem; left: 0; bottom: 0; width: 10rem; overflow-y: auto;}
+.app > nav > ul {padding: 0 0 2rem 0; border-right: 1px solid #AAA;}
+.app > nav ul > li > a, .app > nav ul > li > span {display: block; padding: .25rem 1rem;}
+.app > nav ul > li > ul > li > a, .app > nav ul > li > ul > li > span {display: block; padding: .25rem 1rem .25rem 2rem;}
+.app > nav ul > li > a, .app > nav ul > li > ul > li > a {color: #00A5E2;}
+.app > nav ul > li > a:hover, .app > nav ul > li > ul > li > a:hover {text-decoration: none;}
+.app > nav ul > li > a:hover:after, .app > nav ul > li > ul > li > a:hover:after {content: ' >'; color: #00A5E2;}
+.app > .view {margin: 0 0 0 11rem;}
+ul.cards > li {display: inline-block; background: #FFF; width: 10rem; border-radius: .1rem; margin: 0 1rem 1rem 0;}
+ul.cards > li > h4 {width: 10rem; padding: 7rem 0 1rem; background: url('/images/seoryong.jpg') center center/cover; color: #FFF; border-radius: .1rem .1rem 0 0; text-shadow: 0 .1em .15em rgba(60,72,96,.75);}
+dt {float: left; padding: .25rem 1rem; border-top: 1px solid rgba(0,0,0,0); text-align: left;}
+dd {text-align: right; padding: .25rem 1rem; border-top: 1px solid #EEE;}
