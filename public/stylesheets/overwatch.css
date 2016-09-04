@@ -26,7 +26,7 @@ h6 {font-size: 1em;}
 header {position: fixed; top: 0; left: 0; right: 0; background: #2A3751; color: #FFF; border: 0 0 0.1em;}
 header h1, header > ul, header > ul li, header a {display: inline-block;}
 header h1 {font-size: 1rem; background: #000;}
-header h1 a {padding: 1.25rem 1rem;}
+header h1 a {padding: 1.5rem 1rem;}
 header ul li a {padding: 1.5rem 1rem;}
 header ul li a {border-left: 1px solid #313D56;}
 header h1 a:hover {text-decoration: none; background-color: #222;}
@@ -43,7 +43,7 @@ a.button:hover {background: #F89E35; text-decoration: none;}
 a.button.blue {border: .1em solid #00a5e2; background: transparent; color: #00A5E2;}
 a.button.blue:hover {background: #00a5e2; color: #FFF;}
 .app > .appBar {position: fixed; top: 4rem; left: 0; right: 0; background: #AAA;}
-.app > .appBar h2, .app > .appBar ul, .app > .appBar ul li {display: inline-block; font-size: 1rem;}
+.app > .appBar h2, .app > .appBar > .appFunc, .app > .appBar ul, .app > .appBar ul li {display: inline-block; font-size: 1rem;}
 .app > .appBar a:hover {text-decoration: none; background-color: #888;}
 .app > .appBar h2 a {display: inline-block; padding: .5rem 1rem; color: #FFF;}
 .app > .appBar ul li a {display: inline-block; padding: .5rem .5rem; border-left: 1px solid #999; color: #FFF;}

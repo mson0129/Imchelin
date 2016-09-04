@@ -14,3 +14,6 @@ sup, sub {font-style:normal; font-weight:normal;}
 ul, ol {list-style: none;}
 a {text-decoration: none;}
 a:hover {text-decoration: underline;}
+blockquote {font-style: italic;}
+blockquote:before {content: '"';}
+blockquote:after {content: '"';}

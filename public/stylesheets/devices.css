@@ -1,0 +1,18 @@
+/*iPhone 6 Plus Portrait Mode - 1 Column*/
+@media screen and (max-width: 414px) {
+}
+/*iPhone 6 Plus Landscape Mode - 2 Columns*/
+@media screen and (min-width: 415px) and (max-width: 736px) {
+}
+/*iPad Pro Portrait Mode - 3 Columns*/
+@media screen and (min-width: 737px) and (max-width: 1024px) {
+}
+/*iPad Pro Landscape Mode - 4 Columns*/
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
+}
+/*1080p - 5 Columns*/
+@media screen and (min-width: 1367px) and (max-width: 1920px) {
+}
+/*OverFullHD - 5 Columns*/
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+}

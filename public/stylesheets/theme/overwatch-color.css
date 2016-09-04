@@ -1,0 +1,43 @@
+body.overwatch {background: #F0EEF3; color: #405275;}
+body.overwatch header {background: #2A3751; color: #FFF;}
+    body.overwatch header a {color: #FFF;}
+    body.overwatch header a:hover {text-decoration: none;}
+    body.overwatch header > ul.apps > li > a {border-color: #313D56;}
+    body.overwatch header > ul.apps > li > a:hover {background-color: #39455D;}
+    body.overwatch header > ul.systemFunc > li > a {background: #F7931E;}
+    body.overwatch header > ul.systemFunc > li > a:hover {background: #F89E35;}
+
+body.overwatch blockquote {color: #00A5E2;}
+
+/*body.overwatch a.button = body.overwatch a.button.orange {}*/
+body.overwatch a.button.orange {border-color: #F7931E; background: #F7931E; color: #FFF;}
+body.overwatch a.button.orange:hover {border-color: #F7931E; background: #F89E35;}
+body.overwatch a.button.blue {border-color: #00A5E2; background: transparent; color: #00A5E2;}
+body.overwatch a.button.blue:hover {background: #00A5E2; color: #FFF;}
+
+/*iPhone 6 Plus Portrait Mode - 1 Column*/
+@media screen and (max-width: 414px) {
+}
+/*iPhone 6 Plus Landscape Mode - 2 Columns*/
+@media screen and (min-width: 415px) and (max-width: 736px) {
+}
+/*iPad Pro Portrait Mode - 3 Columns*/
+@media screen and (min-width: 737px) and (max-width: 1024px) {
+    body.overwatch header > h1 > a {background: #000;}
+    body.overwatch header > h1 > a:hover {background-color: #222;}
+}
+/*iPad Pro Landscape Mode - 4 Columns*/
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
+    body.overwatch header > h1 > a {background: #000;}
+    body.overwatch header > h1 > a:hover {background-color: #222;}
+}
+/*1080p - 5 Columns*/
+@media screen and (min-width: 1367px) and (max-width: 1920px) {
+    body.overwatch header > h1 > a {background: #000;}
+    body.overwatch header > h1 > a:hover {background-color: #222;}
+}
+/*OverFullHD - 5 Columns*/
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+    body.overwatch header > h1 > a {background: #000;}
+    body.overwatch header > h1 > a:hover {background-color: #222;}
+}
