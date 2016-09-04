@@ -2,7 +2,10 @@
 	font-family:'Koverwatch';
 	font-style: normal;
 	font-weight: 400;
-	src: url(/fonts/koverwatch.ttf) format('truetype');
+    src:url(/fonts/koverwatch..eot);
+	src:url(/fonts/koverwatch.eot?#iefix) format('embedded-opentype'),
+	url(/fonts/koverwatch.woff) format('woff'),
+	url(/fonts/koverwatch.ttf) format('truetype');
 }
 body.overwatch * {font-family: 'Koverwatch';}
 body.overwatch p {font-family: 'Koverwatch'; line-height: 1.5em; margin-top: 2rem;}
