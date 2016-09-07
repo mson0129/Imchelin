@@ -16,18 +16,20 @@ body {background: #000;}
     </div>
 </div>
 <script type='text/javascript'>
+var database = 'imchelin';
+var databaseVersion = 4;
+
 function getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 $(function() {
-    $('button.orange').click(function() {$('div.appBar > ul > li:nth-child(1)').click();})
+    $('button.orange').click(function() {$('div.appBar > ul > li:nth-child(1)').click();});
     $('ul.input#spots li').click(function () {
         $('ul.input#spots li').removeClass('selected');
-        $(event.currentTarget).addClass('selected');
-
+        $(this).addClass('selected');
         var db;
-        var request = indexedDB.open('imchelin', 3);
+        var request = indexedDB.open(database, databaseVersion);
         request.onsuccess = function(event) {
             console.log('DB Opened');
             db = event.target.result;
@@ -66,7 +68,7 @@ $(function() {
 $.get('/api/getDishes', function(data) {
     var tableDishes = JSON.parse(data);
     var db;
-    var request = indexedDB.open('imchelin', 4);
+    var request = indexedDB.open(database, databaseVersion);
     request.onerror = function(event) {
         console.log('DB NOT Opened');
         console.log(event);
@@ -100,7 +102,6 @@ $.get('/api/getDishes', function(data) {
         var transaction = db.transaction('dishes');
         var objectStore = transaction.objectStore('dishes');
         var index = objectStore.index('name');
-
         var keyword = 20;
         var table = new Array;
         var transaction = db.transaction('dishes');
