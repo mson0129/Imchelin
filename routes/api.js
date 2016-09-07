@@ -13,6 +13,23 @@ var pool = mysql.createPool({
 	waitForConnections: false
 });
 
+router.get('/*', function(req, res, next) {
+	//res.redirect('/users');
+	next();
+});
+
+router.get('/dishes', function(req, res, next) {
+	var query = pool.query('SELECT * FROM imchelin_dishes ORDER BY imchelin_dishes.no;', function(err, rows) {});
+}).post('/dishes', function(req, res, next) {
+ 	var query = pool.query('INSERT INTO imchelin_dishes () VALUES ();', function(err, rows) {});
+}).put('/dishes', function(req, res, next) {
+	var no = 1;
+	var query = pool.query('UPDATE imchelin_dishes SET no=? WHERE no=?;', [no], function(err, rows) {});
+}).delete('/dishes', function(req, res, next) {
+	var no = 1;
+	var query = pool.query('DELETE FROM imchelin_dishes WHERE no=?;', [no], function(err, rows) {});
+});
+
 /*dishes*/
 router.get('/getDishes', function(req, res, next) {
     var query = pool.query('SELECT imchelin_dishes.*, imchelin_restaurants.name AS restaurants, imchelin_spots.no AS spots_no, imchelin_spots.name AS spots FROM imchelin_dishes LEFT JOIN imchelin_restaurants ON imchelin_dishes.restaurants_no = imchelin_restaurants.no LEFT JOIN imchelin_spots ON imchelin_restaurants.spots_no = imchelin_spots.no ORDER BY imchelin_dishes.no;', function(err, rows) {
