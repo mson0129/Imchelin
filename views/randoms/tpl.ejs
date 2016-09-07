@@ -73,9 +73,9 @@ $.get('/api/getDishes', function(data) {
     var tableDishes = JSON.parse(data);
     var db;
     if(!window.indexedDB) {
-        var request = indexedDB.open(database, databaseVersion);
-    } else {
         var request = window.msIndexedDB.open(database, databaseVersion);
+    } else {
+        var request = indexedDB.open(database, databaseVersion);
     }
     request.onerror = function(event) {
         console.log('DB NOT Opened');
