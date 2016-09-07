@@ -1,3 +1,11 @@
+
+/*
+text: #405275;
+DeepBlue: #2A3751 > #39455D(hover)
+Orange: #F7931E > #F89E35(hover)
+SkyBlue: #00A5E2 > #6CF(hover)
+*/
+
 body.overwatch {background: #F0EEF3; color: #405275;}
 body.overwatch header {background: #2A3751; color: #FFF;}
     body.overwatch header a {color: #FFF;}
@@ -8,12 +16,18 @@ body.overwatch header {background: #2A3751; color: #FFF;}
     body.overwatch header > ul.systemFunc > li > a:hover {background: #F89E35;}
 
 body.overwatch blockquote {color: #00A5E2;}
+body.overwatch a {color: #00A5E2;}
+
+body.overwatch ul.input > li {background: #FFF; border-color: #AAA; color: #00A5E2;}
+body.overwatch ul.input > li.selected {background: #00A5E2; color: #FFF;}
 
 /*body.overwatch a.button = body.overwatch a.button.orange {}*/
-body.overwatch a.button.orange {border-color: #F7931E; background: #F7931E; color: #FFF;}
-body.overwatch a.button.orange:hover {border-color: #F7931E; background: #F89E35;}
-body.overwatch a.button.blue {border-color: #00A5E2; background: transparent; color: #00A5E2;}
-body.overwatch a.button.blue:hover {background: #00A5E2; color: #FFF;}
+body.overwatch button.orange, body.overwatch a.button.orange {border-color: #F7931E; background: #F7931E; color: #FFF;}
+body.overwatch button.orange:hover, body.overwatch a.button.orange:hover {border-color: #F7931E; background: #F89E35;}
+body.overwatch button.blue, body.overwatch a.button.blue {border-color: #00A5E2; background: transparent; color: #00A5E2;}
+body.overwatch button.blue:hover, body.overwatch a.button.blue:hover {background: #00A5E2; color: #FFF;}
+
+body.overwatch div.card {background: #FFF;}
 
 /*iPhone 6 Plus Portrait Mode - 1 Column*/
 @media screen and (max-width: 414px) {
@@ -24,20 +38,40 @@ body.overwatch a.button.blue:hover {background: #00A5E2; color: #FFF;}
 /*iPad Pro Portrait Mode - 3 Columns*/
 @media screen and (min-width: 737px) and (max-width: 1024px) {
     body.overwatch header > h1 > a {background: #000;}
-    body.overwatch header > h1 > a:hover {background-color: #222;}
+    body.overwatch header > h1 > a:hover {background: #333;}
+    body.overwatch > div.app > div.appBar {background: #CCC;}
+        body.overwatch > div.app > div.appBar a {color: #00A5E2;}
+        body.overwatch > div.app > div.appBar a:hover {color: #6CF;}
+        body.overwatch > div.app > div.appBar > h2 > a {color: #2A3751;}
+        body.overwatch > div.app > div.appBar > h2 > a:hover {color: #405275;}
 }
 /*iPad Pro Landscape Mode - 4 Columns*/
 @media screen and (min-width: 1025px) and (max-width: 1366px) {
     body.overwatch header > h1 > a {background: #000;}
-    body.overwatch header > h1 > a:hover {background-color: #222;}
+    body.overwatch header > h1 > a:hover {background: #333;}
+    body.overwatch > div.app > div.appBar {background: #CCC;}
+        body.overwatch > div.app > div.appBar a {color: #00A5E2;}
+        body.overwatch > div.app > div.appBar a:hover {color: #6CF;}
+        body.overwatch > div.app > div.appBar > h2 > a {color: #2A3751;}
+        body.overwatch > div.app > div.appBar > h2 > a:hover {color: #405275;}
 }
 /*1080p - 5 Columns*/
 @media screen and (min-width: 1367px) and (max-width: 1920px) {
     body.overwatch header > h1 > a {background: #000;}
-    body.overwatch header > h1 > a:hover {background-color: #222;}
+    body.overwatch header > h1 > a:hover {background: #333;}
+    body.overwatch > div.app > div.appBar {background: #CCC;}
+        body.overwatch > div.app > div.appBar a {color: #00A5E2;}
+        body.overwatch > div.app > div.appBar a:hover {color: #6CF;}
+        body.overwatch > div.app > div.appBar > h2 > a {color: #2A3751;}
+        body.overwatch > div.app > div.appBar > h2 > a:hover {color: #405275;}
 }
 /*OverFullHD - 5 Columns*/
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
     body.overwatch header > h1 > a {background: #000;}
-    body.overwatch header > h1 > a:hover {background-color: #222;}
+    body.overwatch header > h1 > a:hover {background: #333;}
+    body.overwatch > div.app > div.appBar {background: #CCC;}
+        body.overwatch > div.app > div.appBar a {color: #00A5E2;}
+        body.overwatch > div.app > div.appBar a:hover {color: #6CF;}
+        body.overwatch > div.app > div.appBar > h2 > a {color: #2A3751;}
+        body.overwatch > div.app > div.appBar > h2 > a:hover {color: #405275;}
 }

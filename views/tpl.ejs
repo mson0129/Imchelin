@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>임슐랭 가이드 IMCHELIN the GUIDE</title>
+<title><%=title%> &mdash; 임슐랭 가이드 IMCHELIN the GUIDE</title>
 <meta name='viewport' content='width=device-width, user-scalable=no' />
 <meta charset='UTF-8'>
 <link rel='icon' type='image/x-icon' href='/favicon.ico' />
 <link rel='stylesheet' href='/stylesheets/reset.css' />
-<link rel='stylesheet' href='/stylesheets/overwatch.css' />
+<link rel='stylesheet' href='/stylesheets/fonts.css' />
+<link rel='stylesheet' href='/stylesheets/theme/overwatch-layout.css' />
+<link rel='stylesheet' href='/stylesheets/theme/overwatch-color.css' />
 <style type='text/css'>
+/*iPhone 6 Plus Portrait Mode - 1 Column*/
+@media screen and (max-width: 414px) {
+}
+/*iPhone 6 Plus Landscape Mode - 2 Columns*/
+@media screen and (min-width: 415px) and (max-width: 736px) {
+}
+/*iPad Pro Portrait Mode - 3 Columns*/
+@media screen and (min-width: 737px) and (max-width: 1024px) {
+}
+/*iPad Pro Landscape Mode - 4 Columns*/
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
+}
+/*1080p - 5 Columns*/
+@media screen and (min-width: 1367px) and (max-width: 1920px) {
+}
+/*OverFullHD - 5 Columns*/
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+}
 </style>
 <script type='text/javascript' src='/javascripts/jquery-3.1.0.min.js'></script>
 <script type='text/javascript' src='/javascripts/jquery.quicksearch.js'></script>
 <script type='text/javascript'>
 $(function() {
-	if($('.appFunc').length) {
-		$('.appFunc').appendTo('.appBar');
-		$('.appFunc').css('display', 'inline-block');
-	}
-	if($('.pagination').length) {
-		$('section.articles').css('bottom', '3em');
-	}
-	$('section.articles').css('top', $('.view > .filter').length*2+'em');
 });
 </script>
 </head>
-<body>
+<body class='overwatch'>
 <header class='sysBar'>
     <h1><a href='/'>임슐랭 가이드 IMCHELIN the GUIDE</a></h1><ul class='apps'>
         <li><a href='/reviews'>평가</a></li><li><a href='/randoms'>랜덤</a></li><li><a href='/suggestions'>제안</a></li>
@@ -32,182 +44,10 @@ $(function() {
         <li><a href='#'>로그인</a></li>
     </ul>
 </header>
-<div class='app'>
-    <div class='appBar'>
-        <h2><a href='/reviews'>평가</a></h2><section class='appFunc'><ul><li><a href='#' class='credit'>Credit</a></li><li><a href='#'>function2</a></li><li><a href='#'>function3</a></li><li><a href='#'>function4</a></li></ul>
-        </section>
-    </div>
-	<nav>
-        <ul>
-            <li><span>위치별</span>
-                <ul>
-                    <li><a href='#'>누리꿈스퀘어</a></li>
-                    <li><a href='#'>KGIT</a></li>
-                    <li><a href='#'>MBC</a></li>
-                    <li><a href='#'>DDMC</a></li>
-                    <li><a href='#'>사보이시티</a></li>
-                    <li><a href='#'>읍내</a></li>
-                    <li><a href='#'>기타</a></li>
-                </ul>
-            </li>
-            <li><span>종류별</span>
-                <ul>
-                    <li><a href='#'>한식</a></li>
-                    <li><a href='#'>중식</a></li>
-                    <li><a href='#'>양식</a></li>
-                    <li><a href='#'>일식</a></li>
-                    <li><a href='#'>분식</a></li>
-                    <li><a href='#'>후식</a></li>
-                    <li><a href='#'>제3세계</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-    <div class='view'>
-        <section class='articles' style='display: none;'>
-            <h3>임슐랭 가이드 IMCHELIN the GUIDE</h3>
-            <article>
-                <h4>소개</h4>
-                <blockquote>식사를 하면 맛나야지!</blockquote>
-                <p>가장 까다로운 입맛을 보유하기로 유명한 아마추어 음식 평론가 임슐랭<br />
-                그의 엄격한 상암 컬렉션을 여러분에게 공개합니다.<br />
-                당신도 함께 맛보실래요?</p>
-                <p><a class='button' href='#'>평가 보기</a></p>
-            </article>
-            <article>
-                <h4>랜덤</h4>
-                <blockquote>나는 여기서 뭘 하고 있는가...</blockquote>
-                <p>메뉴 선정에 대한 고민은 소중한 시간을 갉아 먹는 지름길!<br />
-                특히 KGIT 푸드코트에서는 고민이 길어질수록 음식이 더더욱 늦게 나오죠.<br />
-                여러분의 소중한 시간을 지키는 방법, 지금 바로 랜덤 선택하세요.</p>
-                <p><a class='button blue' href='#'>랜선웨어: 랜덤 선택 프로그램</a></p>
-            </article>
-            <article>
-                <h4>제안</h4>
-                <blockquote>파전은 내가!</blockquote>
-                <p>랜덤이 아닌 개취존중을 원하신다면 제안을 이용해보세요.<br />
-                임슐랭 프로파일러 기술이 여러분의 식사 패턴을 분석하고<br />
-                이번주에 당신이 먹지 않았던, 하지만 입맛에 딱 맞는 음식으로 추천해드려요!</p>
-                <p><a class='button blue' href='#'>제안 받기</a></p>
-            </article>
-        </section>
-        <ul class='cards'>
-            <li><h4 style="background-image: url('/images/seoryong.jpg');">서룡</h4>
-                <dl>
-                    <dt>냉면</dt>
-                    <dd>★★★</dd>
-                    <dt>(짬)뽕</dt>
-                    <dd>★★☆</dd>
-                    <dt>걍 자장</dt>
-                    <dd>★★☆</dd>
-                    <dt>된장 자장</dt>
-                    <dd>★★☆</dd>
-                    <dt>탕슉</dt>
-                    <dd>★★☆</dd>
-                </dl>
-            </li>
-            <li><h4 style="background-image: url('/images/baekkobjib.jpg');">배꼽집</h4>
-                <dl>
-                    <dt>수육</dt>
-                    <dd>★★★</dd>
-                    <dt>평양물냉면</dt>
-                    <dd>★★☆</dd>
-                    <dt>평양비빔냉면</dt>
-                    <dd>★★☆</dd>
-                    <dt>갈비탕</dt>
-                    <dd>★★☆</dd>
-                    <dt>갈비찜</dt>
-                    <dd>★★☆</dd>
-                </dl>
-            </li>
-            <li><h4 style="background-image: url('/images/abbagomtang.jpg');">아빠곰탕</h4>
-                <dl>
-                    <dt>전주육전냉면</dt>
-                    <dd>★★★</dd>
-                    <dt>곰탕</dt>
-                    <dd>★★☆</dd>
-                    <dt>곰국</dt>
-                    <dd>★★☆</dd>
-                    <dt>곰찌개</dt>
-                    <dd>★★☆</dd>
-                    <dt>곰조림</dt>
-                    <dd>★★☆</dd>
-                </dl>
-            </li>
-            <li><h4 style="background-image: url('/images/madforgarlic.jpg');">매드 포 갈릭</h4>
-                <dl>
-                    <dt>갈릭</dt>
-                    <dd>★★★</dd>
-                    <dt>갈릭디핑소스</dt>
-                    <dd>★★★</dd>
-                    <dt>갈릭홀릭</dt>
-                    <dd>★★☆</dd>
-                    <dt>할리갈릭</dt>
-                    <dd>★★☆</dd>
-                    <dt>마늘쫑</dt>
-                    <dd>☆☆☆</dd>
-                </dl>
-            </li>
-            <li><h4 style="background-image: url('/images/forkook.jpg');">포쿡</h4>
-                <dl>
-                    <dt>1쿡</dt>
-                    <dd>★★★</dd>
-                    <dt>2쿡</dt>
-                    <dd>★★★</dd>
-                    <dt>3쿡</dt>
-                    <dd>★★☆</dd>
-                    <dt>4쿡</dt>
-                    <dd>★★☆</dd>
-                    <dt>쿡쿡2</dt>
-                    <dd>☆☆☆</dd>
-                </dl>
-            </li>
-            <li><h4 style="background-image: url('/images/gyejeolbabsang.jpg');">계절밥상</h4>
-                <dl>
-                    <dt>콩나물국</dt>
-                    <dd>★★★</dd>
-                    <dt>배추김치</dt>
-                    <dd>★★★</dd>
-                    <dt>김말이튀김</dt>
-                    <dd>★★☆</dd>
-                    <dt>닭볶음</dt>
-                    <dd>★★☆</dd>
-                    <dt>잡채</dt>
-                    <dd>☆☆☆</dd>
-                </dl>
-            </li>
-            <li><h4 style="background-image: url('/images/sosohansigdang.jpg');">소소한 식당</h4>
-                <dl>
-                    <dt>에비카레밥</dt>
-                    <dd>★★★</dd>
-                    <dt>에비카레우동</dt>
-                    <dd>★★★</dd>
-                    <dt>에비야끼소바</dt>
-                    <dd>★★☆</dd>
-                    <dt>에비소바</dt>
-                    <dd>★★☆</dd>
-                    <dt>에비야 물 좀...</dt>
-                    <dd>☆☆☆</dd>
-                </dl>
-            </li>
-        </ul>
-    </div>
-</div>
+<!--<app>-->
+<%-include(app)%>
+<!--</app>-->
 <footer style='display: none;'>
-<section class='crawl'>
-    <article class='crawling'>
-        <h3>임슐랭 가이드 IMCHELIN the GUIDE</h3>
-        <p>임슐랭 가이드 IMCHELIN the GUIDE는 파수 임직원들의 생산성을 높여 주기 위한 도우미입니다.<br />
-        '오늘 뭐 먹지?'라는 고민을 300명의 임직원이 5분만 하더라도 낭비되는 시간은 무려 1500분! 자그만치 25시간이 낭비되고 있는 셈이죠.<br />
-        임슐랭 가이드 IMCHELIN the GUIDE는 매일 무엇을 먹을지 걱정되던 여러분들의 생계형 고민을 덜어드리고 업무 생산성 제고를 약속드립니다.</p>
-        <p>평가 외: 남이 사주면 그 돈이 아까운 맛, 살기 위해서라도 안 먹는 음식<br />
-        ☆☆☆: 내 돈 주기 아까운 맛, 살기 위해 먹는 음식<br />
-        ★☆☆: 상암에 와 있다면 먹어볼만한 맛, 내근시 한 번은 먹어볼만한 음식<br />
-        ★★☆: 상암 근처에 있다면 예약 또는 대기를 해서라도 먹고 싶어지는 맛, 내근시 자주 먹을만한 음식<br />
-        ★★★: 이 음식을 맛보기 위해 상암으로 오고 싶어지는 맛, 상암에서만 경험할 수 있는 음식</p>
-        <p style='text-align: center;'>평가 문의: 임종환 사원(9057), 시스템 문의: 손남규 사원(9067)</p>
-    </article>
-</section>
 </footer>
 </body>
 </html>

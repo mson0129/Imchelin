@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var routes = require('./routes/index');
+var api = require('./routes/api');
 var reviews = require('./routes/reviews');
 var randoms = require('./routes/randoms');
 var suggestions = require('./routes/suggestions');
@@ -34,6 +35,7 @@ app.use(require('node-sass-middleware')({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/api', api);
 app.use('/reviews', reviews);
 app.use('/randoms', randoms);
 app.use('/suggestions', suggestions);
