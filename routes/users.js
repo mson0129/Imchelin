@@ -58,7 +58,7 @@ router.get('/', function(req, res, next) {
 	        } else {
 	            //로그인 정보 오류
 	            console.log('Email or Password is wrong.');
-	            res.render('/users', {headers: req.headers, session: req.session, queryString: req._parsedUrl.query, msg: '이메일 또는 암호가 잘못되었습니다.'});
+	            res.render('users', {headers: req.headers, session: req.session, queryString: req._parsedUrl.query, msg: '이메일 또는 암호가 잘못되었습니다.'});
 	        }
 	    }, function (e) {
 	        //log errors or do something with errors
