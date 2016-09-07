@@ -14,7 +14,7 @@ var pool = mysql.createPool({
 });
 
 router.get('/getDishes', function(req, res, next) {
-    var query = pool.query('SELECT imchelin_dishes.*, imchelin_restaurants.name AS restaurants FROM imchelin_dishes LEFT JOIN imchelin_restaurants ON imchelin_dishes.restaurants_no = imchelin_restaurants.no ORDER BY imchelin_dishes.no;', function(err, rows) {
+    var query = pool.query('SELECT imchelin_dishes.*, imchelin_restaurants.name AS restaurants, imchelin_spots.no AS spots_no, imchelin_spots.name AS spots FROM imchelin_dishes LEFT JOIN imchelin_restaurants ON imchelin_dishes.restaurants_no = imchelin_restaurants.no LEFT JOIN imchelin_spots ON imchelin_restaurants.spots_no = imchelin_spots.no ORDER BY imchelin_dishes.no;', function(err, rows) {
         res.send(JSON.stringify(rows));
     });
 });

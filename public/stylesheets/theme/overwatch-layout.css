@@ -35,7 +35,7 @@ body.overwatch ul.input > li:last-child {border-radius: 0 .1em .1em 0;}
 body.overwatch button, body.overwatch a.button {display: inline-block; padding: .5em 2em; border: .1em solid; border-radius: .1em; font-size: 1rem;}
 body.overwatch a.button:hover {text-decoration: none;}
 
-body.overwatch div.card {display: inline-block; width: 12em; padding: 8em 1em; border-radius: .5em;}
+body.overwatch div.card {display: inline-block; width: 12em; padding: 9.5em 1em; border-radius: .5em;}
 
 /*iPhone 6 Plus Portrait Mode - 1 Column*/
 @media screen and (max-width: 414px) {

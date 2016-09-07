@@ -16,24 +16,57 @@ body {background: #000;}
     </div>
 </div>
 <script type='text/javascript'>
+function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 $(function() {
-    $('ul.input#tags li').click(function() {
-        $('ul.input#tags li').removeClass('selected');
-        $(this).addClass('selected');
-        /*
-        if($(this).hasClass('selected')) {
-            $(this).removeClass('selected');
-        } else {
-            $(this).addClass('selected');
+    $('button.orange').click(function() {$('div.appBar > ul > li:nth-child(1)').click();})
+    $('ul.input#spots li').click(function () {
+        $('ul.input#spots li').removeClass('selected');
+        $(event.currentTarget).addClass('selected');
+
+        var db;
+        var request = indexedDB.open('imchelin', 3);
+        request.onsuccess = function(event) {
+            console.log('DB Opened');
+            db = event.target.result;
+            var keyword = ($('ul.input#spots li.selected').hasClass('kgit')) ? 20 : 13;
+            console.log(keyword);
+            var table = new Array;
+            var transaction = db.transaction('dishes');
+            var objectStore = transaction.objectStore('dishes');
+            var request = objectStore.openCursor();
+            request.onerror = function(event) {
+                console.log('Cursor Error');
+                console.log(event);
+            }
+            request.onsuccess = function(event) {
+                var cursor = event.target.result;
+                if(cursor) {
+                    //LILKE %keyword%
+                    //if(cursor.value.spots_no.indexOf(keyword) !== -1) {
+                    if(cursor.value.spots_no == keyword) {
+                        table.push(cursor.value);
+                    }
+                    cursor.continue();
+                } else {
+                    $('div.appBar > ul > li:nth-child(1)').off();
+                    $('div.appBar > ul > li:nth-child(1)').click(function() {
+                        var res = table[getRandomInt(0, table.length-1)];
+                        $('section.result')[0].innerHTML = "<div class='card'>" + res.name + "<br />(" + res.restaurants + ")</div>";
+                        console.log(res);
+                    });
+                }
+            }
         }
-        */
     });
 });
 
 $.get('/api/getDishes', function(data) {
     var tableDishes = JSON.parse(data);
     var db;
-    var request = indexedDB.open('imchelin', 2);
+    var request = indexedDB.open('imchelin', 3);
     request.onerror = function(event) {
         console.log('DB NOT Opened');
         console.log(event);
@@ -50,6 +83,8 @@ $.get('/api/getDishes', function(data) {
         objectStore.createIndex('comment', 'comment', {unique: false});
         objectStore.createIndex('restaurants_no', 'restaurants_no', {unique: false});
         objectStore.createIndex('restaurants', 'restaurants', {unique: false});
+        objectStore.createIndex('spots_no', 'spots_no', {unique: false});
+        objectStore.createIndex('spots', 'spots', {unique: false});
         objectStore.createIndex('tags', 'tags', {unique: false});
 
         tableDishes.forEach(function(value, index) {
@@ -66,29 +101,11 @@ $.get('/api/getDishes', function(data) {
         var objectStore = transaction.objectStore('dishes');
         var index = objectStore.index('name');
 
-        /*
-        var request = objectStore.get(1);
-        request.onerror = function(event) {
-            console.log('Transaction Failed');
-            console.log(event);
-        }
-        request.onsuccess = function(event) {
-            console.log('Transaction Success');
-            console.log(event.target.result);
-        }
-        */
-
-        function getRandomInt (min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-
-        //SELECT * FROM dishes WHERE name LIKE keyword;
-        var keyword = '비빔';
-        var temp = new Array;
+        var keyword = 20;
+        var table = new Array;
         var transaction = db.transaction('dishes');
         var objectStore = transaction.objectStore('dishes');
-        var index = objectStore.index('name');
-        var request = index.openCursor();
+        var request = objectStore.openCursor();
         request.onerror = function(event) {
             console.log('Cursor Error');
             console.log(event);
@@ -96,44 +113,18 @@ $.get('/api/getDishes', function(data) {
         request.onsuccess = function(event) {
             var cursor = event.target.result;
             if(cursor) {
-                if(cursor.value.name.indexOf(keyword) !== -1) {
-                    //console.log(cursor.value);
-                    //temp.push(cursor.value);
-                    temp.push(cursor.value);
+                if(cursor.value.spots_no == keyword) {
+                    table.push(cursor.value);
                 }
                 cursor.continue();
             } else {
-                //console.log(temp.length);
-                $('button.orange').click(function() {
-                    var res = temp[getRandomInt(0, temp.length-1)];
+                $('div.appBar > ul > li:nth-child(1)').click(function() {
+                    var res = table[getRandomInt(0, table.length-1)];
                     $('section.result')[0].innerHTML = "<div class='card'>" + res.name + "<br />(" + res.restaurants + ")</div>";
                     console.log(res);
                 });
             }
         }
-        /*
-        //SELECT * FROM dishes WHERE name LIKE 'keyword%';
-        var request = index.openCursor(IDBKeyRange.bound(keyword, keyword + '\uffff'));
-        request.onerror = function(event) {
-            console.log('Cursor Error');
-            console.log(event);
-        }
-        request.onsuccess = function(event) {
-            var cursor = event.target.result;
-            if(cursor) {
-                //if(cursor.value.name.substr(0, keyword.length) == keyword) {
-                if(cursor.value.name.indexOf(keyword) !== -1) {
-                    console.log('Found!');
-                } else {
-                    console.log('NotFound!');
-                }
-                console.log(cursor.value);
-                cursor.continue();
-            } else {
-                console.log('End Of Entries');
-            }
-        };
-        */
     }; 
 });
 
