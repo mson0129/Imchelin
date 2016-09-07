@@ -7,13 +7,16 @@
 	url(/fonts/koverwatch.woff) format('woff'),
 	url(/fonts/koverwatch.ttf) format('truetype');
 }
-body.overwatch * {font-family: 'Koverwatch';}
+body.overwatch {font-family: 'Koverwatch';}
 body.overwatch p {font-family: 'Koverwatch'; line-height: 1.5em; margin-top: 2rem;}
 
 body.overwatch header {position: fixed; top: 0; left: 0; right: 0;}
 body.overwatch header * {display: inline-block;}
 body.overwatch header a {height: 1rem; padding: 1.5em 1em;}
+body.overwatch header > ul {font-size: 0;}
+body.overwatch header > ul * {font-size: 1rem;}
 body.overwatch header > ul.apps > li > a {border-left: 1px solid;}
+body.overwatch header > ul.systemFunc > li > a {border-left: 1px solid;}
 
 body.overwatch h1, body.overwatch h2, body.overwatch h3, body.overwatch h4, body.overwatch h5, body.overwatch h6 {font-style: italic;}
 body.overwatch h2 {font-size: 3em;}
@@ -32,7 +35,7 @@ body.overwatch ul.input > li {border-left: 1px solid;}
 body.overwatch ul.input > li:first-child {border: 0; border-radius: .1em 0 0 .1em;}
 body.overwatch ul.input > li:last-child {border-radius: 0 .1em .1em 0;}
 
-body.overwatch button, body.overwatch a.button {display: inline-block; padding: .5em 2em; border: .1em solid; border-radius: .1em; font-size: 1rem;}
+body.overwatch button, body.overwatch a.button {display: inline-block; padding: .5em 2em; border: .1em solid; border-radius: .1em;}
 body.overwatch a.button:hover {text-decoration: none;}
 
 body.overwatch div.card {display: inline-block; width: 12em; padding: 9.5em 1em; border-radius: .5em;}

@@ -13,24 +13,35 @@ var pool = mysql.createPool({
 	waitForConnections: false
 });
 
+/*dishes*/
 router.get('/getDishes', function(req, res, next) {
     var query = pool.query('SELECT imchelin_dishes.*, imchelin_restaurants.name AS restaurants, imchelin_spots.no AS spots_no, imchelin_spots.name AS spots FROM imchelin_dishes LEFT JOIN imchelin_restaurants ON imchelin_dishes.restaurants_no = imchelin_restaurants.no LEFT JOIN imchelin_spots ON imchelin_restaurants.spots_no = imchelin_spots.no ORDER BY imchelin_dishes.no;', function(err, rows) {
         res.send(JSON.stringify(rows));
     });
 });
-
 router.get('/getDishes/:no', function(req, res, next) {
 	var query = pool.query('SELECT imchelin_dishes.* FROM imchelin_dishes ORDER BY no;', function(err, rows) {
         res.send(JSON.stringify(rows));
     });
 });
-
 router.get('/getDishes/spots/:no', function(req, res, next) {
 	res.send('getDishes by spots_no');
 });
-
 router.get('/getDishes/restaurants/:no', function(req, res, next) {
 	res.send('getDishes by restaurants_no');
+});
+
+/*Users*/
+router.get('/oauth2/auth', function(req, res, next) {
+	//https://developers.google.com/youtube/v3/guides/auth/server-side-web-apps
+	//client_id
+	//redirect_uri
+	//response_type
+	//scope
+	//approval_prompt
+	//access_type
+	//state
+	//login_hint
 });
 
 module.exports = router;

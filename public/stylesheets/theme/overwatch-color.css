@@ -12,7 +12,7 @@ body.overwatch header {background: #2A3751; color: #FFF;}
     body.overwatch header a:hover {text-decoration: none;}
     body.overwatch header > ul.apps > li > a {border-color: #313D56;}
     body.overwatch header > ul.apps > li > a:hover {background-color: #39455D;}
-    body.overwatch header > ul.systemFunc > li > a {background: #F7931E;}
+    body.overwatch header > ul.systemFunc > li > a {border-color: #F89E35; background: #F7931E;}
     body.overwatch header > ul.systemFunc > li > a:hover {background: #F89E35;}
 
 body.overwatch blockquote {color: #00A5E2;}
