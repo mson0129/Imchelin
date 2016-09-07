@@ -29,7 +29,11 @@ $(function() {
         $('ul.input#spots li').removeClass('selected');
         $(this).addClass('selected');
         var db;
-        var request = indexedDB.open(database, databaseVersion);
+        if(!window.indexedDB) {
+            var request = indexedDB.open(database, databaseVersion);
+        } else {
+            var request = window.msIndexedDB.open(database, databaseVersion);
+        }
         request.onsuccess = function(event) {
             console.log('DB Opened');
             db = event.target.result;
@@ -68,7 +72,11 @@ $(function() {
 $.get('/api/getDishes', function(data) {
     var tableDishes = JSON.parse(data);
     var db;
-    var request = indexedDB.open(database, databaseVersion);
+    if(!window.indexedDB) {
+        var request = indexedDB.open(database, databaseVersion);
+    } else {
+        var request = window.msIndexedDB.open(database, databaseVersion);
+    }
     request.onerror = function(event) {
         console.log('DB NOT Opened');
         console.log(event);
