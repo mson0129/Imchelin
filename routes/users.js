@@ -17,10 +17,9 @@ router.get('/', function(req, res, next) {
 		res.redirect('/');
 	}
 }).post('/', function(req, res, next) {
-
-	if(req.body.email=='' || req.body.password=='') {
+	if(req.body.email!='' && req.body.password!='') {
 		var autod = new ews.AutodiscoverService(new ews.Uri("https://mail.fasoo.com/autodiscover/autodiscover.svc"), ews.ExchangeVersion.Exchange2013);
-    autod.Credentials = new ews.ExchangeCredentials(req.body.email, req.body.password);
+	    autod.Credentials = new ews.ExchangeCredentials(req.body.email, req.body.password);
     	//create array to include list of desired settings 
     	var settings = [
     	ews.UserSettingName.InternalEwsUrl,
