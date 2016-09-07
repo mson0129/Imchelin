@@ -30,9 +30,11 @@ $(function() {
         $(this).addClass('selected');
         var db;
         if(!window.indexedDB) {
-            var request = indexedDB.open(database, databaseVersion);
-        } else {
             var request = window.msIndexedDB.open(database, databaseVersion);
+            console.log('msIndexedDB');
+        } else {
+            var request = indexedDB.open(database, databaseVersion);
+            console.log('indexedDB');
         }
         request.onsuccess = function(event) {
             console.log('DB Opened');
@@ -74,8 +76,10 @@ $.get('/api/getDishes', function(data) {
     var db;
     if(!window.indexedDB) {
         var request = window.msIndexedDB.open(database, databaseVersion);
+        console.log('msIndexedDB');
     } else {
         var request = indexedDB.open(database, databaseVersion);
+        console.log('indexedDB');
     }
     request.onerror = function(event) {
         console.log('DB NOT Opened');
@@ -106,7 +110,6 @@ $.get('/api/getDishes', function(data) {
     request.onsuccess = function(event) {
         console.log('DB Opened');
         db = event.target.result;
-        
         var transaction = db.transaction('dishes');
         var objectStore = transaction.objectStore('dishes');
         var index = objectStore.index('name');
