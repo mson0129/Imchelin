@@ -66,14 +66,14 @@ $(function() {
 $.get('/api/getDishes', function(data) {
     var tableDishes = JSON.parse(data);
     var db;
-    var request = indexedDB.open('imchelin', 3);
+    var request = indexedDB.open('imchelin', 4);
     request.onerror = function(event) {
         console.log('DB NOT Opened');
         console.log(event);
     };
     request.onupgradeneeded = function(event) {
         var db = event.target.result;
-        
+        db.deleteObjectStore('dishes');
         var objectStore = db.createObjectStore('dishes', {keyPath: 'no'});
         objectStore.createIndex('name', 'name', {unique: false});
         objectStore.createIndex('description', 'description', {unique: false});
