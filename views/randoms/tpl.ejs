@@ -16,14 +16,41 @@ body {background: #000;}
     </div>
 </div>
 <script type='text/javascript'>
-var database = 'imchelin';
-var databaseVersion = 5;
-
 function getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-$(function() {
+initDatabase(function(event) {
+    console.log('DB Opened');
+    var db = event.target.result;
+    var transaction = db.transaction('dishes');
+    var objectStore = transaction.objectStore('dishes');
+    var index = objectStore.index('name');
+    var keyword = 20;
+    var table = new Array;
+    var transaction = db.transaction('dishes');
+    var objectStore = transaction.objectStore('dishes');
+    var request = objectStore.openCursor();
+    request.onerror = function(event) {
+        console.log('Cursor Error');
+        console.log(event);
+    }
+    request.onsuccess = function(event) {
+        var cursor = event.target.result;
+        if(cursor) {
+            if(cursor.value.spots_no == keyword) {
+                table.push(cursor.value);
+            }
+            cursor.continue();
+        } else {
+            $('div.appBar > ul > li:nth-child(1)').click(function() {
+                var res = table[getRandomInt(0, table.length-1)];
+                $('section.result')[0].innerHTML = "<div class='card'>" + res.name + "<br />(" + res.restaurants + ")</div>";
+                console.log(res);
+            });
+        }
+    };
+
     $('button.orange').click(function() {$('div.appBar > ul > li:nth-child(1)').click();});
     $('ul.input#spots li').click(function () {
         $('ul.input#spots li').removeClass('selected');
@@ -39,7 +66,7 @@ $(function() {
         request.onsuccess = function(event) {
             console.log('DB Opened');
             db = event.target.result;
-            var keyword = ($('ul.input#spots li.selected').hasClass('kgit')) ? 20 : 13;
+            var keyword = ($('ul.input#spots li.selected').hasClass('kgit')) ? 20 : 21;
             console.log(keyword);
             var table = new Array;
             var transaction = db.transaction('dishes');
@@ -70,78 +97,4 @@ $(function() {
         }
     });
 });
-
-$.get('/api/getDishes', function(data) {
-    var tableDishes = JSON.parse(data);
-    var db;
-    if(!window.indexedDB) {
-        var request = window.msIndexedDB.open(database, databaseVersion);
-        console.log('msIndexedDB');
-    } else {
-        var request = indexedDB.open(database, databaseVersion);
-        console.log('indexedDB');
-    }
-    request.onerror = function(event) {
-        console.log('DB NOT Opened');
-        console.log(event);
-    };
-    request.onupgradeneeded = function(event) {
-        var db = event.target.result;
-        if(db.objectStoreNames.length>0) {
-            for(i=0; i < db.objectStoreNames.length; i++) {
-                db.deleteObjectStore(db.objectStoreNames.item(i));
-            }
-        }
-        var objectStore = db.createObjectStore('dishes', {keyPath: 'no'});
-        objectStore.createIndex('name', 'name', {unique: false});
-        objectStore.createIndex('description', 'description', {unique: false});
-        objectStore.createIndex('price', 'price', {unique: false});
-        objectStore.createIndex('grade', 'grade', {unique: false});
-        objectStore.createIndex('title', 'title', {unique: false});
-        objectStore.createIndex('comment', 'comment', {unique: false});
-        objectStore.createIndex('restaurants_no', 'restaurants_no', {unique: false});
-        objectStore.createIndex('restaurants', 'restaurants', {unique: false});
-        objectStore.createIndex('spots_no', 'spots_no', {unique: false});
-        objectStore.createIndex('spots', 'spots', {unique: false});
-        objectStore.createIndex('tags', 'tags', {unique: false});
-
-        tableDishes.forEach(function(value, index) {
-            objectStore.add(value);
-        });
-        
-        console.log('DB Upgraded');
-    }
-    request.onsuccess = function(event) {
-        console.log('DB Opened');
-        db = event.target.result;
-        var transaction = db.transaction('dishes');
-        var objectStore = transaction.objectStore('dishes');
-        var index = objectStore.index('name');
-        var keyword = 20;
-        var table = new Array;
-        var transaction = db.transaction('dishes');
-        var objectStore = transaction.objectStore('dishes');
-        var request = objectStore.openCursor();
-        request.onerror = function(event) {
-            console.log('Cursor Error');
-            console.log(event);
-        }
-        request.onsuccess = function(event) {
-            var cursor = event.target.result;
-            if(cursor) {
-                if(cursor.value.spots_no == keyword) {
-                    table.push(cursor.value);
-                }
-                cursor.continue();
-            } else {
-                $('div.appBar > ul > li:nth-child(1)').click(function() {
-                    var res = table[getRandomInt(0, table.length-1)];
-                    $('section.result')[0].innerHTML = "<div class='card'>" + res.name + "<br />(" + res.restaurants + ")</div>";
-                    console.log(res);
-                });
-            }
-        }
-    }; 
-});
-
 </script>

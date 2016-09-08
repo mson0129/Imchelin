@@ -1,0 +1,100 @@
+<style type='text/css'>
+ul.cards > li {display: inline-block; width: 10em; border-radius: .1em; margin: 0 1em 1em 0; background: #FFF;}
+ul.cards > li > h4 {width: 4em; padding: 3.5em .5em .5em; border-radius: .1em .1em 0 0; background: #2A3751; color: #FFF; text-shadow: 0 .1em .15em rgba(60,72,96,.75); text-align: center; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+ul.cards > li > dl {display: block;}
+ul.cards > li > dl > dt {float: left; width: 50%; padding: .25em 1em; border-top: 1px solid rgba(0,0,0,0); text-align: left; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+ul.cards > li > dl > dd {padding: .25em 1em; border-top: 1px solid #EEE; text-align: right;}
+/*iPhone 6 Plus Portrait Mode - 1 Column*/
+@media screen and (max-width: 414px) {
+	ul.cards {text-align: center;}
+}
+/*iPhone 6 Plus Landscape Mode - 2 Columns*/
+@media screen and (min-width: 415px) and (max-width: 736px) {
+	ul.cards {text-align: center;}
+}
+/*iPad Pro Portrait Mode - 3 Columns*/
+@media screen and (min-width: 737px) and (max-width: 1024px) {
+}
+/*iPad Pro Landscape Mode - 4 Columns*/
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
+}
+/*1080p - 5 Columns*/
+@media screen and (min-width: 1367px) and (max-width: 1920px) {
+}
+/*OverFullHD - 5 Columns*/
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+}
+</style>
+<section class='articles'>
+	<article>
+		<ul class='cards'>
+		</ul>
+	</article>
+</section>
+<script type='text/javascript' src='/javascripts/indexeddb.upgrade.js'></script>
+<script type='text/javascript'>
+initDatabase(function() {
+	console.log('DB Opened');
+	db = event.target.result;
+	var keyword = 20;
+	var table = new Array;
+	var transaction = db.transaction('restaurants');
+	var objectStore = transaction.objectStore('restaurants');
+	
+	//getAll Request
+	var request = objectStore.getAll();
+	request.onerror = function(event) {
+		console.log('Cursor Error');
+		console.log(event);
+	};
+	request.onsuccess = function(event) {
+		event.target.result.forEach(function(value, index) {
+			var card = document.createElement("li");
+			var restaurantName = document.createElement("h4");
+			restaurantName.innerHTML = value.name;
+			var dishesList = document.createElement("dl");
+
+			//getDishes
+			var subTransaction = db.transaction('dishes');
+			var subObjectStore = subTransaction.objectStore('dishes');
+			var table = new Array;
+			var request = subObjectStore.openCursor();
+			request.onerror = function(event) {
+				console.log('Cursor Error');
+				console.log(event);
+			};
+			request.onsuccess = function(event) {
+				var cursor = event.target.result;
+				if(cursor) {
+					if(cursor.value.restaurants_no == value.no) {
+						table.push(cursor.value);
+					}
+					cursor.continue();
+				} else {
+					//console.log(table);
+					for(i=0; i<5; i++) {
+						var dishesName = document.createElement("dt");
+						var dishesGrade = document.createElement("dd");
+						if(table[i]!=null) {
+							dishesName.innerHTML = table[i].name;
+							if(!table[i].grade) {
+								dishesGrade.innerHTML = '미평가';
+							} else {
+								dishesGrade.innerHTML = table[i].grade;
+							}
+						} else {
+							dishesName.innerHTML = '&nbsp';
+							dishesGrade.innerHTML = '&nbsp';
+						}
+						dishesList.appendChild(dishesName);
+						dishesList.appendChild(dishesGrade);
+					}
+				}
+			};
+			card.appendChild(restaurantName);
+			card.appendChild(dishesList);
+			$('section.articles > article > ul').append(card);
+		});
+	};
+});
+</script>
