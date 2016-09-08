@@ -56,13 +56,7 @@ initDatabase(function(event) {
         $('ul.input#spots li').removeClass('selected');
         $(this).addClass('selected');
         var db;
-        if(!window.indexedDB) {
-            var request = window.msIndexedDB.open(database, databaseVersion);
-            console.log('msIndexedDB');
-        } else {
-            var request = indexedDB.open(database, databaseVersion);
-            console.log('indexedDB');
-        }
+        var request = indexedDB.open('imchelin');
         request.onsuccess = function(event) {
             console.log('DB Opened');
             db = event.target.result;
