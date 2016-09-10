@@ -66,7 +66,7 @@ router.get('/restaurants', function(req, res, next) {
 		});
 		where += ' AND ('+subWhere+')';
 	}
-	var sql = 'SELECT imchelin_restaurants.*, imchelin_spots.name AS spots, imchelin_kinds.name AS kinds FROM imchelin_restaurants LEFT JOIN imchelin_spots ON imchelin_restaurants.spots_no = imchelin_spots.no LEFT JOIN imchelin_kinds ON imchelin_restaurants.kinds_no = imchelin_kinds.no WHERE 1'+where+' ORDER BY imchelin_restaurants.startdate DESC;';
+	var sql = 'SELECT imchelin_restaurants.*, imchelin_spots.name AS spots, imchelin_kinds.name AS kinds FROM imchelin_restaurants LEFT JOIN imchelin_spots ON imchelin_restaurants.spots_no = imchelin_spots.no LEFT JOIN imchelin_kinds ON imchelin_restaurants.kinds_no = imchelin_kinds.no WHERE 1'+where+' ORDER BY imchelin_restaurants.opendate DESC;';
 	var query = pool.query(sql, function(err, rows) {
 		if(err) {
 			console.log(err);
