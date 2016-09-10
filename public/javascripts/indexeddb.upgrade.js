@@ -30,8 +30,11 @@ function initDatabase(callback) {
 				objectStore.createIndex('name', 'name', {unique: false});
 				objectStore.createIndex('description', 'description', {unique: false});
 				objectStore.createIndex('picture', 'picture', {unique: false});
-				objectStore.createIndex('startdate', 'startdate', {unique: false});
-				objectStore.createIndex('enddate', 'enddate', {unique: false});
+				objectStore.createIndex('telephone', 'telephone', {unique: false});
+				objectStore.createIndex('opentime', 'opentime', {unique: false});
+				objectStore.createIndex('closetime', 'closetime', {unique: false});
+				objectStore.createIndex('opendate', 'opendate', {unique: false});
+				objectStore.createIndex('closedate', 'closedate', {unique: false});
 				objectStore.createIndex('runningday', 'runningday', {unique: false});
 				objectStore.createIndex('tags', 'tags', {unique: false});
 				objectStore.createIndex('spots_no', 'spots_no', {unique: false});
