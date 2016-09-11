@@ -2,6 +2,16 @@ console.log('Users App is ready.');
 var express = require('express');
 var router = express.Router();
 var ews = require('ews-javascript-api');
+var mysql = require('mysql');
+var pool = mysql.createPool({
+	host: 'gmgcjwawatv599gq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+	post: 3306,
+	user: 'fya5hs8lwo12q45d',
+	password: 'tot39atzvyxc5kbi',
+	database: 'hqtmtvt9ueap7yfs',
+	connectionLimit: 5,
+	waitForConnections: false
+});
 
 router.get('/*', function(req, res, next) {
 	console.log(req.session);
@@ -40,7 +50,7 @@ router.get('/', function(req, res, next) {
 	    .then(function (response) {
     	    if(response) {
 	            //로그인 정보 굿굿
-    	        req.session.email = req.body.email;
+				req.session.email = req.body.email;
 	            //do what you want with user settings     
 	            var tabcount = 0;
 	            var tabs = function () { return ews.StringHelper.Repeat("\t", tabcount); };
@@ -54,7 +64,30 @@ router.get('/', function(req, res, next) {
 	                tabcount--;
 	                req.session.name = resp.Settings[0];
 	            }
-	            res.redirect('/');
+				var query = pool.query('SELECT * FROM imchelin_users WHERE email = ?;', [req.body.email], function(err, rows) {
+					if(err) {
+						console.log(err);
+						throw err;
+					} else {
+						if(rows.length > 0) {
+							console.log(rows[0].is_admin);
+							req.session.is_admin = rows[0].is_admin;
+						} else {
+							var query2 = pool.query('INSERT INTO imchelin_users (email) VALUES (?);', [req.body.email], function(err, rows) {
+								if(err) {
+									console.log(err);
+									throw err;
+								} else {
+									console.log(email + ' is added.');
+								}
+							});
+							console.log(query2.sql);
+							req.session.is_admin = 0;
+						}
+						res.redirect('/');
+					}
+				});
+				console.log(query.sql);
 	        } else {
 	            //로그인 정보 오류
 	            console.log('Email or Password is wrong.');
