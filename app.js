@@ -26,12 +26,6 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cookieParser());
 app.use(session({secret: 'imchelin the guide', resave: false, saveUninitialized: true}));
-app.use(require('node-sass-middleware')({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  indentedSyntax: true,
-  sourceMap: true
-}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
