@@ -31,7 +31,6 @@ ul.cards > li > dl > dd {padding: .25em 1em; border-top: 1px solid #EEE; text-al
 		</ul>
 	</article>
 </section>
-<script type='text/javascript' src='/javascripts/indexeddb.upgrade.js'></script>
 <script type='text/javascript'>
 initDatabase(function() {
 	console.log('DB Opened');
@@ -42,16 +41,20 @@ initDatabase(function() {
 	var objectStore = transaction.objectStore('restaurants');
 	
 	//getAll Request
-	var request = objectStore.getAll();
+	var request = objectStore.openCursor();
 	request.onerror = function(event) {
 		console.log('Cursor Error');
 		console.log(event);
 	};
 	request.onsuccess = function(event) {
-		event.target.result.forEach(function(value, index) {
+		var cursor = event.target.result;
+		if(cursor) {
 			var card = document.createElement("li");
 			var restaurantName = document.createElement("h4");
-			restaurantName.innerHTML = value.name;
+			var restaurantLink = document.createElement("a");
+			restaurantLink.setAttribute("href", "/reviews/restaurants/"+cursor.value.no);
+			restaurantLink.innerHTML = cursor.value.name;
+
 			var dishesList = document.createElement("dl");
 
 			//getDishes
@@ -64,12 +67,12 @@ initDatabase(function() {
 				console.log(event);
 			};
 			request.onsuccess = function(event) {
-				var cursor = event.target.result;
-				if(cursor) {
-					if(cursor.value.restaurants_no == value.no) {
-						table.push(cursor.value);
+				var cursor2 = event.target.result;
+				if(cursor2) {
+					if(cursor2.value.restaurants_no == cursor.value.no) {
+						table.push(cursor2.value);
 					}
-					cursor.continue();
+					cursor2.continue();
 				} else {
 					//console.log(table);
 					for(i=0; i<5; i++) {
@@ -91,10 +94,15 @@ initDatabase(function() {
 					}
 				}
 			};
+			restaurantName.appendChild(restaurantLink);
 			card.appendChild(restaurantName);
 			card.appendChild(dishesList);
 			$('section.articles > article > ul').append(card);
-		});
+			cursor.continue();
+		} else {
+			//EOF
+			console.log('Done!');
+		}
 	};
 });
 </script>

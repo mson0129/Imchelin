@@ -1,6 +1,35 @@
+<style type='text/css'>
+ul.runningDay {font-size: 0;}
+ul.runningDay * {display: inline-block;}
+ul.runningDay > li {font-size: 1rem; padding: .75em 1em; border: 1px solid #AAA; border-left: 0; background: #FFF;}
+ul.runningDay > li.closed {background: transparent; color: #AAA;}
+ul.runningDay > li:first-child {font-size: 1rem; border-left: 1px solid #AAA; border-radius: .1em 0 0 .1em;}
+ul.runningDay > li:last-child {font-size: 1rem; border-radius: 0 .1em .1em 0;}
+p.description > img {width: 5em; height: 5em;}
+</style>
 <section class='articles'>
     <h3>음식점</h3>
 	<article>
-		<h4></h4>
+		<section class='restaurants'>
+			<h4></h4>
+			<p class='contacts'><a class='phone'></a></p>
+			<p class='description'></p>
+			<p class='runningTime'></p>
+			<ul class='runningDay'>
+				<li id='runningSun'>일</li>
+				<li id='runningMon'>월</li>
+				<li id='runningTue'>화</li>
+				<li id='runningWed'>수</li>
+				<li id='runningThu'>목</li>
+				<li id='runningFri'>금</li>
+				<li id='runnignSat'>토</li>
+			</ul>
+		</section>
+		<section class='dishes'>
+		</section>
 	</article>
 </section>
+<script type='text/javascript' src='/javascripts/reviews.js'></script>
+<script type='text/javascript'>
+initDatabase(getRestaurant);
+</script>
