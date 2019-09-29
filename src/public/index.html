@@ -1,109 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>임슐랭 가이드 IMCHELIN the GUIDE</title>
-<meta name='viewport' content='width=device-width, user-scalable=no' />
-<meta charset='UTF-8'>
-<link rel='icon' type='image/x-icon' href='/favicon.ico' />
-<link rel='stylesheet' href='/css/reset.css' />
-<link rel='stylesheet' href='/css/fonts.css' />
-<style type='text/css'>
-body.overwatch {background: url('/images/restaurants/15.jpg') no-repeat fixed center center/cover;}
-body.overwatch > div.app > div.view {margin: 0;}
-body > div.app > div.view {margin: 0;}
-body > div.app > div.view > section.articles > h3 {padding: 50vh 2rem 20vh; text-align: center; font-size: 4rem; color: #FFF; text-shadow: 0 .1em .15em rgba(60,72,96,.75);}
-body > div.app > div.view > section.articles > article {padding: 4rem 2rem; background: #FFF; text-align: center;}
-body > div.app > div.view > section.articles > article:nth-child(2) {background: #F0EEF3;}
-body > div.app > div.view > section.articles > article:nth-child(3) {background: #FFF;}
-body > div.app > div.view > section.articles > article:nth-child(4) {background: #F0EEF3;}
-body > div.app > div.view > section.articles > article:nth-child(5) {background: #FFF;}
-body > div.app > div.view > section.articles > article:nth-child(6) {background: #F0EEF3;}
-body > div.app > div.view > section.articles > article > h4 {margin-bottom: 2rem; font-size: 3rem;}
-body > div.app > div.view > section.articles > article > blockquote {margin-bottom: 2rem; font-size: 2em;}
-body > div.app > div.view > section.articles > article > p {text-align: center; line-height: 2em;}
-/*iPhone 6 Plus Portrait Mode - 1 Column*/
-@media screen and (max-width: 414px) {
-}
-/*iPhone 6 Plus Landscape Mode - 2 Columns*/
-@media screen and (min-width: 415px) and (max-width: 736px) {
-}
-/*iPad Pro Portrait Mode - 3 Columns*/
-@media screen and (min-width: 737px) and (max-width: 1024px) {
-}
-/*iPad Pro Landscape Mode - 4 Columns*/
-@media screen and (min-width: 1025px) and (max-width: 1366px) {
-}
-/*1080p - 5 Columns*/
-@media screen and (min-width: 1367px) and (max-width: 1920px) {
-}
-/*OverFullHD - 5 Columns*/
-@media screen and (min-width: 1921px) and (max-width: 2560px) {
-}
-</style>
-<script type='text/javascript' src='/js/jquery-3.4.1.min.js'></script>
-<script type='text/javascript' src='/js/network.js' defer></script>
-<script type='text/javascript' src='/js/router.js' defer></script>
-</head>
-<body class='overwatch'>
-<header class='sysBar'>
-    <h1><a href='/'>임슐랭 가이드 IMCHELIN the GUIDE</a></h1><ul id='nav' class='apps'>
-        <li><a href='/review'>평가</a></li>
-        <li><a href='/randoms'>랜덤</a></li>
-        <li><a href='/suggest'>제안</a></li>
-        <li><a href='/add'>등록</a></li>
-    </ul>
-    <ul class='systemFunc'>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
 
-    </ul>
-</header>
-<div id='app' class='app'>
-    <div class='view'>
-        <section class='articles'>
-            <h3>임슐랭 가이드 IMCHELIN the GUIDE</h3>
-            <article>
-                <h4>소개</h4>
-                <blockquote>식사를 하면 맛나야지!</blockquote>
-                <p>가장 까다로운 입맛을 보유하기로 유명한 아마추어 음식 평론가 임슐랭<br />
-                그의 엄격한 상암 컬렉션을 여러분에게 공개합니다.<br />
-                당신도 함께 맛보실래요?</p>
-                <p><a class='button orange' href='/reviews'>평가 보기</a></p>
-            </article>
-            <article>
-                <h4>기획의도</h4>
-                <p>임슐랭 가이드 IMCHELIN the GUIDE는 파수 임직원들의 생산성을 높여 주기 위한 도우미입니다.<br />
-                '오늘 뭐 먹지?'라는 고민을 300명의 임직원이 5분만 하더라도 낭비되는 시간은 무려 하루에 1500분! 자그만치 25시간이 낭비되고 있는 셈이죠.<br />
-                임슐랭 가이드 IMCHELIN the GUIDE는 매일 무엇을 먹을지 걱정되던 여러분들의 생계형 고민을 덜어드리고 업무 생산성 제고를 약속드립니다.</p>
-                <p><a class='button orange' href='/pseudo'>미리 보기</a></p>
-            </article>
-            <article>
-                <h4>평가기준</h4>
-                <p>평가 외: 남이 사주면 그 돈이 아까운 맛, 살기 위해서라도 안 먹는 음식<br />
-                ☆☆☆: 내 돈 주기 아까운 맛, 살기 위해 먹는 음식<br />
-                ★☆☆: 상암에 와 있다면 먹어볼만한 맛, 내근시 한 번은 먹어볼만한 음식<br />
-                ★★☆: 상암 근처에 있다면 예약 또는 대기를 해서라도 먹고 싶어지는 맛, 내근시 자주 먹을만한 음식<br />
-                ★★★: 이 음식을 맛보기 위해 상암으로 오고 싶어지는 맛, 상암에서만 경험할 수 있는 음식</p>
-            </article>
-            <article>
-                <h4>랜덤</h4>
-                <blockquote>한 방이면 충분해.</blockquote>
-                <p>메뉴 선정에 대한 고민은 소중한 시간을 갉아 먹는 지름길!<br />
-                특히 KGIT 푸드코트에서는 고민이 길어질수록 음식이 더더욱 늦게 나오죠.<br />
-                여러분의 소중한 시간을 지키는 방법, 지금 바로 랜덤 선택하세요.</p>
-                <p><a class='button blue' href='/randoms'>랜선웨어: 랜덤 선택 프로그램</a></p>
-            </article>
-            <article>
-                <h4>제안</h4>
-                <blockquote>안녕, 친구들! 해결사가 왔어!</blockquote>
-                <p>랜덤이 아닌 개취존중을 원하신다면 제안을 이용해보세요.<br />
-                임슐랭 프로파일러 기술이 여러분의 식사 패턴을 분석하고<br />
-                이번주에 당신이 먹지 않았던, 하지만 입맛에 딱 맞는 음식으로 추천해드려요!</p>
-                <p><a class='button blue' href='/suggestions'>제안 받기</a></p>
-            </article>
-        </section>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.0.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.0.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.0.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
     </div>
-</div>
-<footer style='display: none;'>
+    <p id="load">Firebase SDK Loading&hellip;</p>
 
-</footer>
-</body>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
 </html>
