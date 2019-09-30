@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>임슐랭 가이드 IMCHELIN the GUIDE</title>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, user-scalable=no, viewport-fit=cover' />
+<meta name='theme-color' content='#A50034'>
+
+<link rel='icon' type='image/x-icon' href='/favicon.ico' />
+<link rel='manifest' href='/manifest.json'>
+<link rel='stylesheet' href='/css/reset.css' />
+<link rel='stylesheet' href='/css/fonts.css' />
+<link rel='stylesheet' href='/css/webapp.css' />
+<style type='text/css'>
+:root, html, body {background-color: #A50034; height: 100%; overflow: hidden;}
+body {padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);}
+/*body.overwatch {background: url('/images/restaurants/15.jpg') no-repeat fixed center center/cover;}*/
+body.overwatch > div.app > div.view {margin: 0;}
+body > div.app > div.view {margin: 0;}
+body > div.app > div.view > section.articles > h3 {padding: 50vh 2rem 20vh; text-align: center; font-size: 4rem; color: #FFF; text-shadow: 0 .1em .15em rgba(60,72,96,.75);}
+body > div.app > div.view > section.articles > article {padding: 4rem 2rem; background: #FFF; text-align: center;}
+body > div.app > div.view > section.articles > article:nth-child(2) {background: #F0EEF3;}
+body > div.app > div.view > section.articles > article:nth-child(3) {background: #FFF;}
+body > div.app > div.view > section.articles > article:nth-child(4) {background: #F0EEF3;}
+body > div.app > div.view > section.articles > article:nth-child(5) {background: #FFF;}
+body > div.app > div.view > section.articles > article:nth-child(6) {background: #F0EEF3;}
+body > div.app > div.view > section.articles > article > h4 {margin-bottom: 2rem; font-size: 3rem;}
+body > div.app > div.view > section.articles > article > blockquote {margin-bottom: 2rem; font-size: 2em;}
+body > div.app > div.view > section.articles > article > p {text-align: center; line-height: 2em;}
+
+header {background-color: rgba(165,0,52,0.9); backdrop-filter: blur(20px); color: #FFF; top: 0; left: 0; right: 0;}
+
+@supports (position: sticky) or (position: -webkit-sticky) {
+    header {background-color: #FFF; position: -webkit-sticky; position: sticky; padding-top: env(safe-area-inset-top);}
+}
+
+@supports (not position: sticky) and (not position: -webkit-sticky) {
+    header {background-color: #FFF; position: fixed;}
+}
+
+/*iPhone 6 Plus Portrait Mode - 1 Column*/
+@media screen and (max-width: 414px) {
+}
+/*iPhone 6 Plus Landscape Mode - 2 Columns*/
+@media screen and (min-width: 415px) and (max-width: 736px) {
+}
+/*iPad Pro Portrait Mode - 3 Columns*/
+@media screen and (min-width: 737px) and (max-width: 1024px) {
+}
+/*iPad Pro Landscape Mode - 4 Columns*/
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
+}
+/*1080p - 5 Columns*/
+@media screen and (min-width: 1367px) and (max-width: 1920px) {
+}
+/*OverFullHD - 5 Columns*/
+@media screen and (min-width: 1921px) and (max-width: 2560px) {
+}
+</style>
+<script type='text/javascript' src='/js/jquery-3.4.1.min.js'></script>
+<script type='text/javascript' src='/js/network.js' defer></script>
+<script type='text/javascript' src='/js/router.js' defer></script>
+<script type='text/javascript' src='/js/color.js' defer></script>
+
+<meta name='apple-mobile-web-app-title' content='Imchelin' lang='en-us' />
+<meta name='apple-mobile-web-app-title' content='임슐랭' lang='ko-kr' />
+<meta name='apple-mobile-web-app-capable' content='yes' />
+<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />
+<link rel='apple-touch-icon' href='/images/apple-icon.png' />
+<link rel='apple-touch-startup-image' href='/images/launch.png' />
+
+</head>
+<body class='overwatch'>
+<header class='sysBar'>
+    <h1><a href='/'>임슐랭 더 가이드 IMCHELIN the GUIDE</a></h1><ul id='nav' class='apps'>
+        <li><a href='/review'>평가</a></li>
+        <li><a href='/randoms'>랜덤</a></li>
+        <li><a href='/suggest'>제안</a></li>
+        <li><a href='/add'>등록</a></li>
+    </ul>
+    <ul class='systemFunc'>
+    </ul>
+</header>
+<div id='app' class='app'>
+    <div class='view'>
+        <section class='articles'>
+            <h3>임슐랭 가이드 IMCHELIN the GUIDE</h3>
+            <article>
+                <h4>소개</h4>
+                <blockquote>식사를 하면 맛나야지!</blockquote>
+                <p>가장 까다로운 입맛을 보유하기로 유명한 아마추어 음식 평론가 임슐랭<br />
+                그의 엄격한 상암 컬렉션을 여러분에게 공개합니다.<br />
+                당신도 함께 맛보실래요?</p>
+                <p><a class='button orange' href='/reviews'>평가 보기</a></p>
+            </article>
+            <article>
+                <h4>기획의도</h4>
+                <p>임슐랭 가이드 IMCHELIN the GUIDE는 파수 임직원들의 생산성을 높여 주기 위한 도우미입니다.<br />
+                '오늘 뭐 먹지?'라는 고민을 300명의 임직원이 5분만 하더라도 낭비되는 시간은 무려 하루에 1500분! 자그만치 25시간이 낭비되고 있는 셈이죠.<br />
+                임슐랭 가이드 IMCHELIN the GUIDE는 매일 무엇을 먹을지 걱정되던 여러분들의 생계형 고민을 덜어드리고 업무 생산성 제고를 약속드립니다.</p>
+                <p><a class='button orange' href='/pseudo'>미리 보기</a></p>
+            </article>
+            <article>
+                <h4>평가기준</h4>
+                <p>평가 외: 남이 사주면 그 돈이 아까운 맛, 살기 위해서라도 안 먹는 음식<br />
+                ☆☆☆: 내 돈 주기 아까운 맛, 살기 위해 먹는 음식<br />
+                ★☆☆: 상암에 와 있다면 먹어볼만한 맛, 내근시 한 번은 먹어볼만한 음식<br />
+                ★★☆: 상암 근처에 있다면 예약 또는 대기를 해서라도 먹고 싶어지는 맛, 내근시 자주 먹을만한 음식<br />
+                ★★★: 이 음식을 맛보기 위해 상암으로 오고 싶어지는 맛, 상암에서만 경험할 수 있는 음식</p>
+            </article>
+            <article>
+                <h4>랜덤</h4>
+                <blockquote>한 방이면 충분해.</blockquote>
+                <p>메뉴 선정에 대한 고민은 소중한 시간을 갉아 먹는 지름길!<br />
+                특히 KGIT 푸드코트에서는 고민이 길어질수록 음식이 더더욱 늦게 나오죠.<br />
+                여러분의 소중한 시간을 지키는 방법, 지금 바로 랜덤 선택하세요.</p>
+                <p><a class='button blue' href='/randoms'>랜선웨어: 랜덤 선택 프로그램</a></p>
+            </article>
+            <article>
+                <h4>제안</h4>
+                <blockquote>안녕, 친구들! 해결사가 왔어!</blockquote>
+                <p>랜덤이 아닌 개취존중을 원하신다면 제안을 이용해보세요.<br />
+                임슐랭 프로파일러 기술이 여러분의 식사 패턴을 분석하고<br />
+                이번주에 당신이 먹지 않았던, 하지만 입맛에 딱 맞는 음식으로 추천해드려요!</p>
+                <p><a class='button blue' href='/suggestions'>제안 받기</a></p>
+            </article>
+        </section>
+    </div>
+</div>
+<footer>
+
+</footer>
+</body>
+</html>
