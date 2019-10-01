@@ -17,6 +17,7 @@ header {position: fixed; background-color: rgba(165,0,52,0.9); backdrop-filter: 
 @supports (position: sticky) or (position: -webkit-sticky) {
     header {position: -webkit-sticky; position: sticky; padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);}
 }
+body.dark footer {position: absolute; right: 0; bottom: 0; left: 0; height: 249px; color: #000; backdrop-filter: blur(20px);}
 
 /*iPhone 6 Plus Portrait Mode - 1 Column*/
 @media screen and (max-width: 414px) {
@@ -63,8 +64,16 @@ header {position: fixed; background-color: rgba(165,0,52,0.9); backdrop-filter: 
 </header>
 <div id='app' class='app'>
 </div>
-<footer>
-
+<footer class='menubar'>
+    <nav>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </nav>
 </footer>
 </body>
 </html>
