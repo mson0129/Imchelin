@@ -9,12 +9,10 @@
     window.matchMedia('(prefers-color-scheme: light)').addListener(e => e.matches && activateLightMode())
 
     function activateDarkMode() {
-        app.innerHTML = 'DarkMode';
         console.log('[color]', 'DarkMode');
     }
 
     function activateLightMode() {
-        app.innerHTML = 'LightMode';
         console.log('[color]', 'LightMode');
     }
 
@@ -29,5 +27,8 @@
         }
     }
 
-    screen.orientation.lock('portrait');
+    window.screen.orientation.lock('portrait');
+    ScreenOrientation.lock('portrait');
+    window.screen.mozOrientation.lock('portrait');
+    window.screen.lockOrientation('portrait');
 }());
