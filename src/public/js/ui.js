@@ -1,5 +1,6 @@
 (function () {
-    const app = document.getElementById('app');
+    //Display Light or Dark Mode
+    const body = document.querySelector('body');
     const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
     const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
     const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
@@ -9,11 +10,13 @@
     window.matchMedia('(prefers-color-scheme: light)').addListener(e => e.matches && activateLightMode())
 
     function activateDarkMode() {
-        console.log('[color]', 'DarkMode');
+        body.classList.add('dark');
+        body.classList.remove('light');
     }
 
     function activateLightMode() {
-        console.log('[color]', 'LightMode');
+        body.classList.add('light');
+        body.classList.remove('dark');
     }
 
     if(isDarkMode) activateDarkMode()
@@ -27,8 +30,18 @@
         }
     }
 
-    window.screen.orientation.lock('portrait');
-    ScreenOrientation.lock('portrait');
-    window.screen.mozOrientation.lock('portrait');
-    window.screen.lockOrientation('portrait');
+    //Screen Orientation
+    if(typeof(ScreenOrientation.lock) === "function") {
+        //Draft
+        ScreenOrientation.lock('portrait');
+    } else if(typeof(window.screen.lockOrientation) === "function") {
+        //IE
+        window.screen.lockOrientation('portrait');
+    } else if(typeof(window.screen.mozOrientation.lock) === "function") {
+        //moz
+        window.screen.mozOrientation.lock('portrait');
+    } else if(typeof(window.screen.orientation.lock) === "function") {
+        //ETC
+        window.screen.orientation.lock('portrait');
+    }
 }());

@@ -1,6 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html manifest='imchelin.appcache'>
 <head>
+<!--3rd Party Import-->
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/6.6.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/6.6.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.6.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/6.6.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.6.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <script type='text/javascript' src='/js/jquery-3.4.1.min.js'></script>
+    <script type='text/javascript' src='/js/router.js' defer></script>
+    <script type='text/javascript' src='/js/ui.js' defer></script>
+    <script type='text/javascript' src='/js/auth.js' defer></script>
+
+    <meta name='apple-mobile-web-app-title' content='Imchelin' lang='en-us' />
+    <meta name='apple-mobile-web-app-title' content='임슐랭' lang='ko-kr' />
+    <meta name='apple-mobile-web-app-capable' content='yes' />
+    <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />
+    <link rel='apple-touch-icon' href='/images/apple-icon.png' />
+    <link rel='apple-touch-startup-image' href='/images/launch.png' />
+
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Noto+Serif+KR&display=swap" rel="stylesheet">
+<!--/3rd Party Importing-->
+
 <title>임슐랭 가이드 IMCHELIN the GUIDE</title>
 <meta charset='UTF-8'>
 <meta name='viewport' content='user-scalable=no, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover' />
@@ -10,80 +36,126 @@
 <link rel='manifest' href='/manifest.json'>
 <link rel='stylesheet' href='/css/reset.css' />
 <link rel='stylesheet' href='/css/fonts.css' />
-<link rel='stylesheet' href='/css/webapp.css' />
+<link rel='stylesheet' href='/css/2bpwa-webapp.css' />
+<link rel='stylesheet' href='/css/theme-light.css' />
+<link rel='stylesheet' href='/css/theme-dark.css' />
 <style type='text/css'>
-:root {height: calc(100% + env(safe-area-inset-top)); /*background: linear-gradient(rgba(165,0,52,1) 0%, rgba(165,0,52,1) 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);*/}
-html {height: 100%; width: 100%; overflow: hidden; -webkit-text-size-adjust: 100%;}
-body {height: 100%; width: 100%; /*overflow: auto; -webkit-overflow-scrolling: touch;*/}
-header {position: fixed; background-color: rgba(165,0,52,0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); color: #FFF; top: 0; left: 0; right: 0; height: 64px; z-index: 999; padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);}
-div.app {padding: 83pt; background: rgba(255,255,255,1);}
-article {margin-top: 20pt; border-radius: 20pt; height: 50vh; background: #85D916;}
-footer {position: fixed; right: 0; bottom: 0; left: 0; height: 83px; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); color: rgba(255,255,255,0.5); z-index: 999;}
+* {font-family: 'Noto Sans KR';}
+h1 {font-family: 'BigNoodleTitling'; word-break: keep-all; word-wrap: break-word;}
+body.signin {background: rgba(165,0,52,0.9); color: rgba(255,255,255,1);}
+body.signin > div.app > div.wrapper {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 49%; text-align: center;}
+body.signin > div.app > div.wrapper > object {height: 5em;}
+body.signin > div.app > div.wrapper > hr {display: block; height: 2px; border: 0; margin: 1em auto; width: 10em; background: rgba(255,255,255,1);}
+body.signin > div.app > div.wrapper > h1 {font-size: 3.5em;}
+body.signin > div.app > div.btnWrapper {position: absolute; right: 0; bottom: 0; left: 0; padding: 2em;}
+body.signin > div.app > div.btnWrapper > button {padding: .5em 1em; border: 0; border-radius: .2em; width: 100%; background: rgba(255,255,255,1); color: rgba(0,0,0,1); box-shadow: 0 0 .5em rgba(0,0,0,.5);}
+body.signin > div.app > div.btnWrapper > button:active {box-shadow: 0 0 0;}
+body.signin button > img {height: 1em;}
 
-ul > li {display: inline-block;}
-
-/*iPhone 6 Plus Portrait Mode - 1 Column*/
-@media screen and (max-width: 414px) {
-}
-/*iPhone 6 Plus Landscape Mode - 2 Columns*/
-@media screen and (min-width: 415px) and (max-width: 736px) {
-}
-/*iPad Pro Portrait Mode - 3 Columns*/
-@media screen and (min-width: 737px) and (max-width: 1024px) {
-}
-/*iPad Pro Landscape Mode - 4 Columns*/
-@media screen and (min-width: 1025px) and (max-width: 1366px) {
-}
-/*1080p - 5 Columns*/
-@media screen and (min-width: 1367px) and (max-width: 1920px) {
-}
-/*OverFullHD - 5 Columns*/
-@media screen and (min-width: 1921px) and (max-width: 2560px) {
-}
+body {-webkit-overflow-scrolling: touch; overflow: auto;}
 </style>
-<script type='text/javascript' src='/js/jquery-3.4.1.min.js'></script>
-<script type='text/javascript' src='/js/network.js' defer></script>
-<script type='text/javascript' src='/js/router.js' defer></script>
-<script type='text/javascript' src='/js/ui.js' defer></script>
-
-<meta name='apple-mobile-web-app-title' content='Imchelin' lang='en-us' />
-<meta name='apple-mobile-web-app-title' content='임슐랭' lang='ko-kr' />
-<meta name='apple-mobile-web-app-capable' content='yes' />
-<meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />
-<link rel='apple-touch-icon' href='/images/apple-icon.png' />
-<link rel='apple-touch-startup-image' href='/images/launch.png' />
-
 </head>
 <body>
-<header class='sysBar'>
-    <h1><a href='/'>임슐랭 더 가이드 IMCHELIN the GUIDE</a></h1><ul id='nav' class='apps'>
-        <li><a href='/review'>평가</a></li>
-        <li><a href='/randoms'>랜덤</a></li>
-        <li><a href='/suggest'>제안</a></li>
-        <li><a href='/add'>등록</a></li>
-    </ul>
-    <ul class='systemFunc'>
-    </ul>
-</header>
-    <div id='app' class='app'>
-        <h2>투데이</h2>
-        <article>
-            <h3>오늘의 중식</h3>
-        </article>
-        <article>
-            <h3>오늘의 일식</h3>
-        </article>
-    </div>
-<footer class='menubar'>
-    <nav>
-        <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-        </ul>
-    </nav>
-</footer>
+<div id='app' class='app'>
+    <header>
+        <button id='signOut'>로그아웃</button>
+    </header>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+    <section>
+        <h2>Helloworld</h2>
+    </section>
+</div>
 </body>
 </html>

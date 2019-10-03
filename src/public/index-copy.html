@@ -30,6 +30,16 @@ body > div.app > div.view > section.articles > article > p {text-align: center; 
 
 header {background-color: rgba(165,0,52,0.9); backdrop-filter: blur(20px); color: #FFF; top: 0; left: 0; right: 0;}
 
+:root {height: calc(100% + env(safe-area-inset-top)); /*background: linear-gradient(rgba(165,0,52,1) 0%, rgba(165,0,52,1) 50%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);*/}
+html {height: 100%; width: 100%; overflow: hidden; -webkit-text-size-adjust: 100%;}
+body {height: 100%; width: 100%; /*overflow: auto; -webkit-overflow-scrolling: touch;*/}
+header {position: fixed; background-color: rgba(165,0,52,0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); color: #FFF; top: 0; left: 0; right: 0; height: 64px; z-index: 999; padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);}
+div.app {padding: 83pt; background: rgba(255,255,255,1);}
+article {margin-top: 20pt; border-radius: 20pt; height: 50vh; background: #85D916;}
+footer {position: fixed; right: 0; bottom: 0; left: 0; height: 83px; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); color: rgba(255,255,255,0.5); z-index: 999;}
+
+ul > li {display: inline-block;}
+
 @supports (position: sticky) or (position: -webkit-sticky) {
     header {background-color: #FFF; position: -webkit-sticky; position: sticky; padding-top: env(safe-area-inset-top);}
 }

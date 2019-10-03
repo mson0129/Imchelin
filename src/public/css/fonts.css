@@ -144,3 +144,18 @@ http://clagnut.com/blog/2228
 		url(//mson0129.github.io/fonts/NanumSquare/NanumSquareEB.woff) format('woff'),
 		url(//mson0129.github.io/fonts/NanumSquare/NanumSquareEB.ttf) format('truetype');
 }
+
+@font-face {
+    font-family: 'BigNoodleTitling';
+    font-style: normal;
+    font-weight: normal;
+	src: local('BigNoodleTitling'),
+		url('/fonts/BigNoodleTitling/BigNoodleTitling.woff') format('woff');
+}
+@font-face {
+    font-family: 'BigNoodleTitling Oblique';
+    font-style: normal;
+    font-weight: normal;
+	src: local('BigNoodleTitling Oblique'),
+		url('/fonts/BigNoodleTitling/BigNoodleTitlingOblique.woff') format('woff');
+}
