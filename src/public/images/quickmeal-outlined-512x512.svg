@@ -9,6 +9,7 @@
         }
         @media screen and (prefers-color-scheme: dark) {
             .icon {fill: rgba(136,136,136,1);}
+             .icon:hover, .icon:active {color: hsl(206.7, 100%, 70%);}
         }
         ]]>
     </style>
