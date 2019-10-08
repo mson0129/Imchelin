@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <style type="text/css">
+        <![CDATA[
+        .icon {fill: #888;}
+        @media screen and (prefers-color-scheme: light) {
+            .icon {fill: black;}
+        }
+        @media screen and (prefers-color-scheme: dark) {
+            .icon {fill: rgba(136,136,136,1);}
+        }
+        ]]>
+    </style>
+    <g transform="matrix(6.68005,0,0,5.44681,-2633.12,-12140.9)">
+        <path class="icon" d="M431,2272.59L446,2272.59L406,2323L417,2281.45L406,2281.45L419,2229L459,2229L431,2272.59ZM421.663,2233.41L410.847,2277.04L421.944,2277.04L414.178,2306.38L437.49,2277L423.596,2277L451.596,2233.41L421.663,2233.41Z" />
+    </g>
+</svg>

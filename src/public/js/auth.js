@@ -74,6 +74,19 @@ firebase.auth().getRedirectResult().then(function(result) {
             get('/data/nav.html?_=' + ((new Date()).getTime()))
             .then(res => {
                 body.innerHTML += res;
+
+                if(document.getElementById('signOut') !== null) {
+                    const buttonSignOut = document.getElementById('signOut');
+                    buttonSignOut.addEventListener('click', e => {
+                    firebase.auth().signOut().then(function() {
+                    // Sign-out successful.
+                    }).catch(function(error) {
+                    // An error happened.
+                    });
+                });
+                } else {
+                    console.error('[Auth]', 'There is no Sign-out button.');
+                }
             }).catch(e => {
                 console.error('[Auth]', 'Nav failed.');
             });
@@ -93,17 +106,4 @@ firebase.auth().getRedirectResult().then(function(result) {
             });
         }
     });
-
-    if(document.getElementById('signOut') !== null) {
-        const buttonSignOut = document.getElementById('signOut');
-        buttonSignOut.addEventListener('click', e => {
-        firebase.auth().signOut().then(function() {
-        // Sign-out successful.
-        }).catch(function(error) {
-        // An error happened.
-        });
-    });
-    } else {
-        console.error('[Auth]', 'There is no Sign-out button.');
-    }
 }());
