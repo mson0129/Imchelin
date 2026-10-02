@@ -1,109 +1,93 @@
-/*
-//신규 사용자 가입
-firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-});
-
-//기존 사용자 가입
-firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-});
-*/
-
-/*
-firebase.auth().getRedirectResult().then(function(result) {
-    if (result.credential) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        // ...
-    }
-        // The signed-in user info.
-        var user = result.user;
-}).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // The email of the user's account used.
-    var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
-    // ...
-});
-*/
 (function () {
-    const body = document.querySelector('body');
+    const body = document.body;
     const app = document.getElementById('app');
+    const listMarkup = app.innerHTML;
+    const auth = firebase.auth();
+    let revision = 0;
 
     function get(url) {
         return new Promise((resolve, reject) => {
-            var xhr = new XMLHttpRequest();
+            const xhr = new XMLHttpRequest();
             xhr.open('GET', url, true);
-            xhr.onreadystatechange = function (e) {
-                if (xhr.readyState === XMLHttpRequest.DONE) {   
-                    if (xhr.status === 200) resolve(xhr.response);
-                    else reject(xhr.statusText);
-                }
+            xhr.timeout = 15000;
+            xhr.onload = function () {
+                if (xhr.status === 200) resolve(xhr.responseText);
+                else reject(new Error('화면을 불러오지 못했습니다.'));
             };
-            try {
-                xhr.send();
-            } catch (e) {
-                console.log(e);
-            }
+            xhr.onerror = xhr.ontimeout = function () {
+                reject(new Error('네트워크 연결을 확인해 주세요.'));
+            };
+            xhr.send();
         });
     }
 
-    firebase.auth().onAuthStateChanged(function(user) {
+    function showError(message) {
+        let error = document.getElementById('authError');
+        if (!error) {
+            error = document.createElement('p');
+            error.id = 'authError';
+            error.setAttribute('role', 'alert');
+            (app.querySelector('.btnWrapper') || app).appendChild(error);
+        }
+        error.textContent = message;
+    }
+
+    function loginError(error) {
+        if (error.code === 'auth/popup-closed-by-user' ||
+            error.code === 'auth/cancelled-popup-request') return;
+        const message = error.code === 'auth/popup-blocked'
+            ? '팝업이 차단됐습니다. 이 사이트의 팝업을 허용한 뒤 다시 로그인해 주세요.'
+            : '로그인하지 못했습니다. 다시 시도해 주세요.';
+        showError(message);
+    }
+
+    document.addEventListener('click', function (event) {
+        if (!event.target.closest('#signOut')) return;
+        auth.signOut().catch(function () {
+            showError('로그아웃하지 못했습니다. 다시 시도해 주세요.');
+        });
+    });
+
+    auth.onAuthStateChanged(function (user) {
+        const currentRevision = ++revision;
+        const nav = document.getElementById('nav');
+        if (nav) nav.remove();
+
+        body.classList.toggle('signin', !user);
         if (user) {
-            // User is signed in.
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var isAnonymous = user.isAnonymous;
-            var uid = user.uid;
-            var providerData = user.providerData;
-            // ...
-            console.log(user);
-
-            get('/data/nav.html?_=' + ((new Date()).getTime()))
-            .then(res => {
-                body.innerHTML += res;
-
-                if(document.getElementById('signOut') !== null) {
-                    const buttonSignOut = document.getElementById('signOut');
-                    buttonSignOut.addEventListener('click', e => {
-                    firebase.auth().signOut().then(function() {
-                    // Sign-out successful.
-                    }).catch(function(error) {
-                    // An error happened.
-                    });
-                });
-                } else {
-                    console.error('[Auth]', 'There is no Sign-out button.');
-                }
-            }).catch(e => {
-                console.error('[Auth]', 'Nav failed.');
+            // Restore the list replaced by the sign-in screen without recreating body.
+            app.innerHTML = listMarkup;
+            get('/data/nav.html').then(function (markup) {
+                if (currentRevision !== revision) return;
+                body.insertAdjacentHTML('beforeend', markup);
+            }).catch(function (error) {
+                if (currentRevision === revision) showError(error.message);
             });
         } else {
-            // No user is signed in.
-            body.classList.add('signin');
-            get('/data/signin.html?_=' + ((new Date()).getTime()))
-            .then(res => {
-                app.innerHTML = res;
-                const buttonGoogle = document.getElementById('signInWithGoogle');
-                buttonGoogle.addEventListener('click', e => {
-                    var provider = new firebase.auth.GoogleAuthProvider();
-                    firebase.auth().signInWithRedirect(provider);
+            app.innerHTML = '';
+            get('/data/signin.html').then(function (markup) {
+                // Ignore a delayed sign-in response after authentication completes.
+                if (currentRevision !== revision) return;
+                app.innerHTML = markup;
+                const button = document.getElementById('signInWithGoogle');
+                button.addEventListener('click', function () {
+                    button.disabled = true;
+                    const error = document.getElementById('authError');
+                    if (error) error.remove();
+                    auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+                        .catch(function (error) {
+                            if (currentRevision === revision) loginError(error);
+                        }).then(function () {
+                            button.disabled = false;
+                        });
                 });
-            }).catch(e => {
-                console.error('[Auth]', 'Sign-in failed.');
+            }).catch(function (error) {
+                if (currentRevision === revision) showError(error.message);
             });
         }
+    }, function () {
+        showError('로그인 상태를 확인하지 못했습니다. 새로고침해 주세요.');
     });
+
+    auth.getRedirectResult().catch(loginError);
 }());

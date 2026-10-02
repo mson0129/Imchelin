@@ -1,28 +1,28 @@
 (function () {
-    function initRouter() {
-        const app = document.getElementById('app');
-        const nav = document.getElementById('nav');
-        
-        //History(Back and Prev)
-        window.addEventListener('popstate', e => {
-            console.log('[PopState]', e.state);
-            app.innerHTML = JSON.stringify(e);
-        });
-        //Click
-        nav.addEventListener('click', e => {
-            e.preventDefault();
-            const path = e.target.getAttribute('href');
-            history.pushState({ path }, null, path);
-            app.innerHTML = path;
-        });
+    const app = document.getElementById('app');
+    const listMarkup = app.innerHTML;
+
+    function render(path) {
+        if (document.body.classList.contains('signin')) return;
+        if (path === '/' || path === '/history') {
+            app.innerHTML = listMarkup;
+        } else {
+            app.textContent = path;
+        }
     }
 
-    if(typeof(MutationObserver) === 'function') {
-        const target = document.querySelector('body');
-        var observer = new MutationObserver(initRouter);
-        var configs = {attributes: false, childList: true, characterData: false};
-        observer.observe(target, configs);
-    } else {
-        document.body.addEventListener('DOMSubtreeModified', initRouter, false);
-    }
+    window.addEventListener('popstate', function () {
+        render(window.location.pathname);
+    });
+
+    // Delegate once so loading or removing navigation never duplicates handlers.
+    document.addEventListener('click', function (event) {
+        const link = event.target.closest('#nav a[href]');
+        if (!link || event.button !== 0 || event.metaKey || event.ctrlKey ||
+            event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        const path = link.getAttribute('href');
+        history.pushState({ path: path }, '', path);
+        render(path);
+    });
 }());
